@@ -8,19 +8,23 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <h3>test</h3>
             <h2>Variabele titel</h2>
+            <h3>Alle users</h3>
             <hr>
             <?php
-            if ($database->connection){
-                echo "ok connectie gemaakt met de database";
+            $users = User::find_all_users();
+            foreach ($users as $user){
+                echo $user->username . "<br>";
             }
+            ?>
+            <h3>zoek user met id</h3>
+            <?php
+            /*$result = User::find_user_by_id(2);
+            echo $result['first_name'] . "<br>";*/
+            $user = User::find_user_by_id(3);
 
-            echo "<br>" . "ophalen van een user" . "<br>";
-            $sql = "SELECT * FROM user WHERE id=1";
-            $result = $database->query($sql);
-            $user_found = mysqli_fetch_array($result);
-            echo $user_found['last_name'];
+
+            echo $user->username . ' - ' . $user->last_name . ' - ' . $user->first_name;
             ?>
         </div>
     </div>
