@@ -8,6 +8,7 @@
     </div>
     <div class="row">
         <div class="col-12">
+            <h3>test</h3>
             <h2>Variabele titel</h2>
             <hr>
             <?php
