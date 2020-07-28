@@ -1,5 +1,6 @@
 <?php require_once ("includes/header.php");?>
 <?php
+$the_message = "";
 if ($session->is_signed_in()){
     redirect("index.php");
 }
@@ -40,14 +41,17 @@ if (isset($_POST['submit'])){
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
+                    <h2 class="bg-danger">
+                        <?php echo $the_message;?>
+                    </h2>
                   <form class="user" method="post">
                     <div class="form-group">
                         <label for="username">Username:</label>
-                      <input type="text" name="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="text" name="username" value="<?php echo htmlentities($username);?>" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                      <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="password" name="password" value="<?php echo htmlentities($password);?>"class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
