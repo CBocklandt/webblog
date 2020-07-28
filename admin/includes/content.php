@@ -23,9 +23,28 @@
             echo $result['first_name'] . "<br>";*/
             $user = User::find_user_by_id(3);
 
-
             echo $user->username . ' - ' . $user->last_name . ' - ' . $user->first_name;
             ?>
+            <?php
+            //create user
+            /*$user = new User();
+            $user->username = "Ikzelf";
+            $user->password = "1234";
+            $user->first_name = "Ik";
+            $user->last_name = "Zelf";
+
+            $user->create();*/
+            //update user
+            /*$user = USER::find_user_by_id(4);
+            $user->last_name = "ZELFDENER";
+
+            $user->update();*/
+
+            //delete user
+            $user = User::find_user_by_id(4);
+            $user->delete();
+            ?>
+
         </div>
     </div>
 
