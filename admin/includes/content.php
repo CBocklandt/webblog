@@ -27,10 +27,10 @@
             ?>
             <?php
             //create user
-            $user = new User();
+            /*$user = new User();
             $user->username = "TESTER";
 
-            $user->save();
+            $user->save();*/
 
             //update user
             $user = USER::find_by_id(3);
