@@ -42,6 +42,22 @@
             /*$user = User::find_user_by_id(9);
             $user->delete();
             */?>
+            <h3>alle produkten</h3>
+            <?php
+            $products = Product::find_all();
+            foreach ($products as $product){
+                echo $product->title . "<br>";
+            }
+            ?>
+            <?php
+            $product = new Product();
+            $product->title = "SAND";
+            $product->description = "Lorem Ipsum";
+            $product->size = 15;
+
+            $product->save();
+            echo INCLUDES_PATH;
+            ?>
 
         </div>
     </div>
