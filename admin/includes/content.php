@@ -28,13 +28,13 @@
             <?php
             //create user
             $user = new User();
-            $user->username = "Jijzelf";
+            $user->username = "TESTER";
 
             $user->save();
 
             //update user
             $user = USER::find_by_id(3);
-            $user->last_name = "TEST";
+            $user->last_name = "De Trog";
 
             $user->save();
 
