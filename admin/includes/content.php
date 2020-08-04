@@ -12,7 +12,7 @@
             <h3>Alle users</h3>
             <hr>
             <?php
-            $users = User::find_all_users();
+            $users = User::find_all();
             foreach ($users as $user){
                 echo $user->username . "<br>";
             }
@@ -21,29 +21,27 @@
             <?php
             /*$result = User::find_user_by_id(2);
             echo $result['first_name'] . "<br>";*/
-            $user = User::find_user_by_id(3);
+            $user = User::find_by_id(3);
 
             echo $user->username . ' - ' . $user->last_name . ' - ' . $user->first_name;
             ?>
             <?php
             //create user
-            /*$user = new User();
-            $user->username = "Ikzelf";
-            $user->password = "1234";
-            $user->first_name = "Ik";
-            $user->last_name = "Zelf";
+            $user = new User();
+            $user->username = "Jijzelf";
 
-            $user->create();*/
+            $user->save();
+
             //update user
-            /*$user = USER::find_user_by_id(4);
-            $user->last_name = "ZELFDENER";
+            $user = USER::find_by_id(3);
+            $user->last_name = "TEST";
 
-            $user->update();*/
+            $user->save();
 
             //delete user
-            $user = User::find_user_by_id(4);
+            /*$user = User::find_user_by_id(9);
             $user->delete();
-            ?>
+            */?>
 
         </div>
     </div>
