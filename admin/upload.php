@@ -7,7 +7,7 @@ if (!$session->is_signed_in()){
     redirect('login.php');
 }
 //upload
-$message = "";
+$message = '';
 if (isset($_POST['submit'])){
     $product = new Product();
     $product->title = $_POST['title'];

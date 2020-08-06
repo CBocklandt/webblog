@@ -21,8 +21,11 @@ $products = Product::find_all();
                     <th>Product</th>
                     <th>Id</th>
                     <th>Title</th>
+                    <th>Caption</th>
                     <th>File</th>
+                    <th>Alternate Text</th>
                     <th>Size</th>
+                    <th>Edit?</th>
                     <th>Delete?</th>
                 </tr>
                 </thead>
@@ -32,8 +35,12 @@ $products = Product::find_all();
                     <td><img src="<?php echo $product->picture_path();?>" height="62" width="62" alt=""></td>
                     <td><?php echo $product->id; ?></td>
                     <td><?php echo $product->title; ?></td>
+                    <td><?php echo $product->caption; ?></td>
                     <td><?php echo $product->filename; ?></td>
+                    <td><?php echo $product->alternate_text; ?></td>
                     <td><?php echo $product->size; ?></td>
+                    <td><a href="edit_product.php?id=<?php echo $product->id;?>"
+                           class="btn btn-danger rounded-0"><i class="fas fa-edit"></i></a></td>
                     <td><a href="delete_product.php?id=<?php echo $product->id;?>"
                         class="btn btn-danger rounded-0"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>

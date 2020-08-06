@@ -4,11 +4,13 @@
 class Product extends Db_object
 {
     protected static $db_table = "product";
-    protected static $db_table_fields = array('title', 'description', 'filename', 'type', 'size');
+    protected static $db_table_fields = array('title', 'caption', 'description', 'filename', 'alternate_text', 'type', 'size');
     public $id;
     public $title;
+    public $caption;
     public $description;
     public $filename;
+    public $alternate_text;
     public $type;
     public $size;
 
@@ -35,7 +37,7 @@ class Product extends Db_object
             return false;
         }else{
            $this->filename = basename($file['name']);
-           $this->tmp_path = $file['tmp_path'];
+           $this->tmp_path = $file['tmp_name'];
            $this->type = $file['type'];
            $this->size = $file['size'];
         }
