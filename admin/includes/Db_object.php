@@ -4,10 +4,11 @@
 class Db_object
 {
     public static function find_all(){
-        return static::find_this_query("SELECT * FROM " . static::$db_table);
+        return static::find_this_query("SELECT * FROM " . static::$db_table . " ");
     }
 
     public static function find_by_id($id){
+        global $database;
         $result = static::find_this_query("SELECT * FROM " . static::$db_table . " WHERE id=$id LIMIT 1");
         /*if (!empty($result)){
             return array_shift($result);
@@ -51,7 +52,7 @@ class Db_object
 
     public function create(){
         global $database;
-        $properties = $this->properties();
+        $properties = $this->clean_properties();
 
         $sql = "INSERT INTO " . static::$db_table . " (" . implode(",", array_keys($properties)) . ")";
         $sql .= " VALUES ('". implode("','", array_values($properties)) . "')";
@@ -92,7 +93,7 @@ class Db_object
     public function delete(){
         global $database;
 
-        $sql = "DELETE FROM " . static::$db_table;
+        $sql = "DELETE FROM " . static::$db_table . " ";
         $sql .= "WHERE id= " . $database->escape_string($this->id);
         $sql .= " LIMIT 1";
 

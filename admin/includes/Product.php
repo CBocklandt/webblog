@@ -5,7 +5,7 @@ class Product extends Db_object
 {
     protected static $db_table = "product";
     protected static $db_table_fields = array('title', 'description', 'filename', 'type', 'size');
-    public $product_id;
+    public $id;
     public $title;
     public $description;
     public $filename;
@@ -42,7 +42,7 @@ class Product extends Db_object
     }
 
     public function save(){
-        if ($this->product_id){
+        if ($this->id){
             $this->update();
         }else{
             if (!empty($this->errors)){
@@ -55,7 +55,7 @@ class Product extends Db_object
             $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS .$this->filename;
 
             if (file_exists($target_path)){
-                ^$this->errors = "File {$this->filename} exists";
+                $this->errors = "File {$this->filename} exists";
                 return false;
             }
             if (move_uploaded_file($this->tmp_path, $target_path)){
@@ -67,6 +67,19 @@ class Product extends Db_object
                 $this->errors[] = "This folder has no write rights";
                 return false;
             }
+        }
+    }
+
+    public function picture_path(){
+        return $this->upload_directory . DS . $this->filename;
+    }
+
+    public function delete_product(){
+        if ($this->delete()){
+            $target_path = SITE_ROOT.DS.'admin'.DS.$this->picture_path();
+            return unlink($target_path) ? true : false;
+        }else{
+            return false;
         }
     }
 
